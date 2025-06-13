@@ -12,13 +12,14 @@ interface AppEnv {
     VITE_ENV: EnvMode
     BACKEND_PROXY: string
     SENTRY_TOKEN: string
+    SONAR_TOKEN: string
 }
 
 const validateEnv = (envMode: EnvMode, env: AppEnv) => {
     const requiredVars: (keyof AppEnv)[] = ['PORT', 'VITE_ENV', 'BACKEND_PROXY']
 
     if (envMode === 'production') {
-        requiredVars.push('SENTRY_TOKEN')
+        requiredVars.push('SENTRY_TOKEN', 'SONAR_TOKEN')
     }
 
     for (const key of requiredVars) {
