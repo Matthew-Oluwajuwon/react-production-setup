@@ -1,5 +1,6 @@
-function App() {
-    return <div className="bg-amber-500">React production setup with Vite</div>
-}
+import { Layout } from '@/shared'
 
+function App() {
+    return <Layout>Hello world</Layout>
+}
 export default App
