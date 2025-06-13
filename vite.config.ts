@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -10,10 +11,15 @@ interface AppEnv {
     PORT: string
     VITE_ENV: EnvMode
     BACKEND_PROXY: string
+    SENTRY_TOKEN: string
 }
 
 const validateEnv = (envMode: EnvMode, env: AppEnv) => {
-    const requiredVars: (keyof AppEnv)[] = ['PORT', 'VITE_ENV']
+    const requiredVars: (keyof AppEnv)[] = ['PORT', 'VITE_ENV', 'BACKEND_PROXY']
+
+    if (envMode === 'production') {
+        requiredVars.push('SENTRY_TOKEN')
+    }
 
     for (const key of requiredVars) {
         if (!env[key]) {
@@ -51,7 +57,19 @@ export default defineConfig(({ mode }) => {
     }
 
     return {
-        plugins: [react(), tailwindcss()],
+        plugins: [
+            react(),
+            tailwindcss(),
+            env.VITE_ENV === 'production' &&
+                sentryVitePlugin({
+                    org: 'mtech-nb',
+                    project: 'react-production-setup',
+                    authToken: env.SENTRY_TOKEN,
+                    sourcemaps: {
+                        filesToDeleteAfterUpload: 'dist/assets/**/*.map'
+                    }
+                })
+        ],
         test: {
             globals: true,
             environment: 'jsdom',
@@ -88,6 +106,7 @@ export default defineConfig(({ mode }) => {
         preview: config,
         build: {
             minify: true,
+            sourcemap: env.VITE_ENV === 'production',
             rollupOptions: {
                 external: [/.*\.(test|spec)\.(ts|tsx)$/, /.*\.(test|spec)\.(js|jsx)$/, /.*\.(test|spec)\.(mjs|cjs)$/, /.*\.(test|spec)\.(mts|cts)$/]
             }
