@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -51,6 +52,17 @@ export default defineConfig(({ mode }) => {
 
     return {
         plugins: [react(), tailwindcss()],
+        test: {
+            globals: true,
+            environment: 'jsdom',
+            setupFiles: './src/setupTests.ts',
+            css: true,
+            include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+            exclude: ['node_modules', 'dist', 'build'],
+            coverage: {
+                provider: 'v8'
+            }
+        },
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, 'src')
@@ -59,7 +71,10 @@ export default defineConfig(({ mode }) => {
         server: config,
         preview: config,
         build: {
-            minify: true
+            minify: true,
+            rollupOptions: {
+                external: [/.*\.(test|spec)\.(ts|tsx)$/, /.*\.(test|spec)\.(js|jsx)$/, /.*\.(test|spec)\.(mjs|cjs)$/, /.*\.(test|spec)\.(mts|cts)$/]
+            }
         }
     }
 })
