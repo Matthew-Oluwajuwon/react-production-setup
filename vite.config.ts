@@ -7,6 +7,7 @@ type EnvMode = 'development' | 'production' | 'test'
 interface AppEnv {
     PORT: string
     VITE_ENV: EnvMode
+    BACKEND_PROXY: string
 }
 
 const validateEnv = (envMode: EnvMode, env: AppEnv) => {
@@ -37,7 +38,14 @@ export default defineConfig(({ mode }) => {
 
     const config: ServerOptions = {
         port,
-        open: true
+        open: true,
+        proxy: {
+            '/api': {
+                target: env.BACKEND_PROXY,
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+        }
     }
 
     return {
