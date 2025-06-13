@@ -24,4 +24,28 @@ describe('Layout', () => {
         expect(div).toHaveClass('items-center')
         expect(div).toHaveClass('justify-center')
     })
+
+    it('renders multiple children', () => {
+        render(
+            <Layout>
+                <span>Child 1</span>
+                <span>Child 2</span>
+            </Layout>
+        )
+        expect(screen.getByText('Child 1')).toBeInTheDocument()
+        expect(screen.getByText('Child 2')).toBeInTheDocument()
+    })
+
+    it('renders fragment children', () => {
+        render(
+            <Layout>
+                <>
+                    <span>Fragment Child 1</span>
+                    <span>Fragment Child 2</span>
+                </>
+            </Layout>
+        )
+        expect(screen.getByText('Fragment Child 1')).toBeInTheDocument()
+        expect(screen.getByText('Fragment Child 2')).toBeInTheDocument()
+    })
 })
