@@ -29,6 +29,7 @@ jobs:
                   projectBaseDir: .
               env:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Run eslint
               run: npm run lint:eslint
@@ -46,6 +47,7 @@ jobs:
                   BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
                   VITE_ENV: ${{ vars.VITE_ENV }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     production:
         if: github.event_name == 'push'
