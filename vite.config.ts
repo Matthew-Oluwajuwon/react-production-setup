@@ -84,7 +84,7 @@ export default defineConfig(({ mode }) => {
             exclude: ['node_modules', 'dist', 'build'],
             coverage: {
                 provider: 'v8',
-                reporter: ['text', 'json', 'html'],
+                reporter: ['text', 'json', 'html', 'lcov'],
                 include: ['src/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
                 exclude: [
                     'coverage',
