@@ -22,6 +22,10 @@ const validateEnv = (envMode: EnvMode, env: AppEnv) => {
         requiredVars.push('SENTRY_TOKEN', 'SONAR_TOKEN')
     }
 
+    if (envMode === 'test') {
+        requiredVars.push('SONAR_TOKEN')
+    }
+
     for (const key of requiredVars) {
         if (!env[key]) {
             throw new Error(`Missing environment variable: ${key} in mode ${envMode}`)
