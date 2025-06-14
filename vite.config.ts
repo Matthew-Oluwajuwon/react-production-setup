@@ -24,7 +24,7 @@ const validateEnv = (envMode: EnvMode, env: AppEnv) => {
 
     for (const key of requiredVars) {
         if (!env[key]) {
-            throw new Error(`Missing environment variable: ${key} in mode ${envMode}`)
+            throw new Error(`Missing environment variable!: ${key} in mode ${envMode}`)
         }
     }
 }
