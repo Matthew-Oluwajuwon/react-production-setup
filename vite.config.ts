@@ -32,7 +32,7 @@ const validateEnv = (envMode: EnvMode, env: AppEnv) => {
 const normalizePort = (port: string): number => {
     const parsedPort = parseInt(port, 10)
     if (isNaN(parsedPort)) {
-        throw new Error(`Invalid port number: ${port}`)
+        throw new Error(`Invalid port number!!: ${port}`)
     }
     return parsedPort >= 0 ? parsedPort : 3000 // Ensure port is non-negative
 }
