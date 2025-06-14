@@ -1,15 +1,14 @@
-// __tests__/layout.test.tsx
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { Layout } from '../layout'
+import { Layout } from '../index'
 
-describe('Layout component', () => {
-    it('renders children correctly', () => {
+describe('Barrel file export (shared/index.ts)', () => {
+    it('exports Layout and renders it properly', () => {
         render(
             <Layout>
-                <span>Test Content</span>
+                <span>From shared index</span>
             </Layout>
         )
-        expect(screen.getByText('Test Content')).toBeInTheDocument()
+        expect(screen.getByText('From shared index')).toBeInTheDocument()
     })
 })
