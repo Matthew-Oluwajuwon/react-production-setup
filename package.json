@@ -9,7 +9,7 @@
         "format:check": "prettier --check .",
         "format:fix": "prettier --write .",
         "lint:stylelint": "stylelint '**/*.{css,scss}'",
-        "sonar": "sonar-scanner",
+        "sonar": "sonarqube-scanner",
         "dev": "vite",
         "build": "tsc -b && vite build",
         "preview": "vite preview",
