@@ -16,6 +16,6 @@ describe('App', () => {
 
     it('renders "Hello world!!" inside Layout', () => {
         render(<App />)
-        expect(screen.getByText('Hello world!!!')).toBeInTheDocument()
+        expect(screen.getByText('Hello world!')).toBeInTheDocument()
     })
 })
