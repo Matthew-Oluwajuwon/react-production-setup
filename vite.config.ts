@@ -65,15 +65,15 @@ export default defineConfig(({ mode }) => {
         plugins: [
             react(),
             tailwindcss(),
-            env.VITE_ENV === 'production' &&
-                sentryVitePlugin({
-                    org: 'mtech-nb',
-                    project: 'react-production-setup',
-                    authToken: env.SENTRY_TOKEN,
-                    sourcemaps: {
-                        filesToDeleteAfterUpload: 'dist/assets/**/*.map'
-                    }
-                })
+
+            sentryVitePlugin({
+                org: 'mtech-nb',
+                project: 'react-production-setup',
+                authToken: env.SENTRY_TOKEN,
+                sourcemaps: {
+                    filesToDeleteAfterUpload: 'dist/assets/**/*.map'
+                }
+            })
         ],
         test: {
             globals: true,
