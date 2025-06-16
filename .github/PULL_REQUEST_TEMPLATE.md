@@ -1,35 +1,50 @@
-## 🔥 Description
+Short description explaining the high-level reason for the pull request
 
-Please include a summary of the changes and the related issue.
-Mention if this is a new feature, bug fix, or enhancement.
+## TICKET NO
 
-- Fixes #
-- Closes #
+-
 
-## 📸 Screenshots (if applicable)
+## Screenshots
 
-| Before | After |
-| ------ | ----- |
-| Image  | Image |
+-
+
+## Design Docs (Figma Link...)
+
+-
+
+## Addition
+
+-
+
+## Removals
+
+-
+
+## Changes
+
+-
+
+## Testing
+
+-
+
+## Todos
+
+-
 
 ## ✅ Checklist
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
+- [ ] Branch name is in the form `<jira-ticket-no>--<feature>`
+- [ ] Changes are limited to a single goal (no scope creep)
+- [ ] New feature is hidden behind feature flag
+- [ ] Code follows the standards laid out in the [front end guildlines](https://teamapt.atlassian.net/wiki/x/bwDTR)
+- [ ] New functions include new tests
+- [ ] New functions are documented (with a description, list of inputs, and expected output)
+- [ ] Visually tested in supported browsers and devices
+- [ ] Linting
+- [ ] Implementation matches Figma design
 
-## 🧪 How to Test
+## Author(s)
 
-Please describe the steps reviewers can take to verify your changes:
-
-1. Go to '...'
-2. Click on '...'
-3. See behavior/result
-
-## 📝 Additional context
-
-Add any other context about the PR here.
+%{merge_request_author}
+%{co_authored_by}
