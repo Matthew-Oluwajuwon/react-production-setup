@@ -37,7 +37,7 @@ Short description explaining the high-level reason for the pull request
 - [ ] Branch name is in the form `<jira-ticket-no>--<feature>`
 - [ ] Changes are limited to a single goal (no scope creep)
 - [ ] New feature is hidden behind feature flag
-- [ ] Code follows the standards laid out in the [front end guildlines](https://teamapt.atlassian.net/wiki/x/bwDTR)
+- [ ] Code follows the standards laid out in the [front end guildlines]
 - [ ] New functions include new tests
 - [ ] New functions are documented (with a description, list of inputs, and expected output)
 - [ ] Visually tested in supported browsers and devices
